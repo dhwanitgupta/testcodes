@@ -1,7 +1,7 @@
 package ds.iterators;
 
-import ds.BinaryTree;
-import ds.BinaryTreeNode;
+import ds.models.BinaryTree;
+import ds.models.BinaryTreeNode;
 
 import java.util.Stack;
 
@@ -26,10 +26,10 @@ public class BinaryTreeIterator implements TreeIterator {
         while(!inorderStack.isEmpty() || currentInorderNode != null) {
             if (currentInorderNode != null) {
                 inorderStack.push(currentInorderNode);
-                currentInorderNode = currentInorderNode.left;
+                currentInorderNode = currentInorderNode.getLeft();
             } else {
                 BinaryTreeNode inorderNode = inorderStack.pop();
-                currentInorderNode = inorderNode.right;
+                currentInorderNode = inorderNode.getRight();
                 return inorderNode;
             }
         }
@@ -64,10 +64,10 @@ public class BinaryTreeIterator implements TreeIterator {
             }
             if (currentPreOrderNode != null ) {
                 BinaryTreeNode preOrderNode = currentPreOrderNode;
-                if (currentPreOrderNode.right != null) {
-                    preOrderStack.push(currentPreOrderNode.right);
+                if (currentPreOrderNode.getRight() != null) {
+                    preOrderStack.push(currentPreOrderNode.getRight());
                 }
-                currentPreOrderNode = currentPreOrderNode.left;
+                currentPreOrderNode = currentPreOrderNode.getLeft();
                 return preOrderNode;
             }
         }
